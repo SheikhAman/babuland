@@ -86,7 +86,7 @@ class Item {
   String? paymentType;
   SellPerson? sellPerson;
   num? bunitFk;
-  Date? sellDate;
+  String? sellDate;
   MobileNumber? couponCode;
   num? vat;
   SellPerson? slType;
@@ -115,7 +115,7 @@ class Item {
         paymentType: json["payment_type"],
         sellPerson: sellPersonValues.map[json["sell_person"]],
         bunitFk: json["bunit_fk"],
-        sellDate: dateValues.map[json["sell_date"]],
+        sellDate: json['sell_date'],
         couponCode: json["coupon_code"] == null
             ? null
             : mobileNumberValues.map[json["coupon_code"]],
