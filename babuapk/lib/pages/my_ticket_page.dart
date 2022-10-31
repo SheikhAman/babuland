@@ -2,11 +2,13 @@ import 'dart:convert';
 
 import 'package:babuapk/models/info_model.dart';
 import 'package:babuapk/utils/constants.dart';
+import 'package:babuapk/utils/custom_line.dart';
 import 'package:babuapk/utils/txt_style.dart';
 import 'package:babuapk/widgets/custom_ticket_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../models/info_model.dart';
+import 'package:gradient_borders/gradient_borders.dart';
 import '../models/ticket_model.dart' as ticket;
 
 class MyTicketPage extends StatefulWidget {
@@ -76,19 +78,129 @@ class _MyTicketPageState extends State<MyTicketPage> {
               return Column(
                 children: [
                   Container(
-                    child: Column(
+                    height: size.height * 0.55,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white,
+                            Color(0xfffff1de),
+                          ]),
+                    ),
+                    child: ListView(
                       children: [
-                        TicketWidget(
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            decoration: BoxDecoration(color: Color(0xfff7eca6)),
                             width: double.infinity,
-                            height: 200,
-                            child: Text('d'),
-                            area: 20,
-                            curveSize: 20),
+                            height: size.height / 3.5,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    top: BorderSide(
+                                        color: Color(0xff4DB84D), width: 3),
+                                    left: BorderSide(
+                                        color: Color(0xfff7931e), width: 3),
+                                    right: BorderSide(
+                                        color: Color(0xff00AEEF), width: 3),
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 15.0,
+                                            right: 15,
+                                            top: 8,
+                                            bottom: 8),
+                                        child: Column(
+                                          children: [
+                                            Image.asset('images/logo.png'),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Text(
+                                              'Uttara',
+                                              style: txt15Black,
+                                            ),
+                                            CustomLiene(),
+                                            Text(
+                                              'Wari',
+                                              style: txt15Black,
+                                            ),
+                                            CustomLiene(),
+                                            Text(
+                                              'Badda',
+                                              style: txt15Black,
+                                            ),
+                                            CustomLiene(),
+                                            Text(
+                                              'Mirpur',
+                                              style: txt15Black,
+                                            ),
+                                            CustomLiene(),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 15.0,
+                                            right: 15,
+                                            top: 8,
+                                            bottom: 8),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              'Child Ticket',
+                                              style: txtMid,
+                                            ),
+                                            Text(
+                                              'SL NO:',
+                                              style: txt15grey,
+                                            ),
+                                            Text(
+                                              'Quantity: ${snapshot.data!.items![0].qty}',
+                                              style: txt16red,
+                                            ),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Color(0xff5eb646),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20))),
+                                              onPressed: () {},
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0),
+                                                child: Text(
+                                                    'Price: ${snapshot.data!.items![0].mrp}$takaSymbol'),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    height: size.height * 0.55,
-                    decoration: BoxDecoration(color: Color(0xfffff1de)),
                   ),
+                  // end part
                   Expanded(
                     child: Container(
                       color: Color(0xffffffff),
@@ -128,7 +240,7 @@ class _MyTicketPageState extends State<MyTicketPage> {
                                     children: [
                                       Text(
                                         'Order ID',
-                                        style: txt16grey,
+                                        style: txt15grey,
                                       ),
                                       SizedBox(
                                         height: 3,
@@ -142,7 +254,7 @@ class _MyTicketPageState extends State<MyTicketPage> {
                                       ),
                                       Text(
                                         'Ticket Purchase Date',
-                                        style: txt16grey,
+                                        style: txt15grey,
                                       ),
                                       SizedBox(
                                         height: 3,
@@ -156,7 +268,7 @@ class _MyTicketPageState extends State<MyTicketPage> {
                                       ),
                                       Text(
                                         'Ticket Expire Date',
-                                        style: txt16grey,
+                                        style: txt15grey,
                                       ),
                                       SizedBox(
                                         height: 3,
@@ -170,14 +282,13 @@ class _MyTicketPageState extends State<MyTicketPage> {
                                       ),
                                       Text(
                                         'Ticket Price',
-                                        style: txt16grey,
+                                        style: txt15grey,
                                       ),
                                       SizedBox(
                                         height: 3,
                                       ),
                                       Text(
-                                        snapshot.data!.items![0].tp.toString() +
-                                            dollarSymbol,
+                                        '${snapshot.data!.items![0].mrp}$takaSymbol',
                                         style: txt16Orange,
                                       ),
                                     ],

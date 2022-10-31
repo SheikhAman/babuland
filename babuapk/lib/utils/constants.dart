@@ -1,1 +1,1 @@
-const String dollarSymbol = '৳';
+const String takaSymbol = '৳';
