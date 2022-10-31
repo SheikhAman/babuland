@@ -41,6 +41,7 @@ class _TicketPageState extends State<TicketPage> {
     getTicketApi();
     return Scaffold(
       appBar: AppBar(
+        leading: Icon(Icons.arrow_back),
         centerTitle: true,
         title: const Text('Tickets'),
         backgroundColor: const Color(0xffff8c1a),

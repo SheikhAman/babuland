@@ -56,7 +56,7 @@ class _MyTicketPageState extends State<MyTicketPage> {
               Navigator.pop(context);
             },
             icon: Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios,
               color: Color(0xffF7931E),
             )),
         centerTitle: true,
@@ -92,106 +92,158 @@ class _MyTicketPageState extends State<MyTicketPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(color: Color(0xfff7eca6)),
+
+                          ///TicketWidget
+                          child: TicketWidget(
                             width: double.infinity,
                             height: size.height / 3.5,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    top: BorderSide(
-                                        color: Color(0xff4DB84D), width: 3),
-                                    left: BorderSide(
-                                        color: Color(0xfff7931e), width: 3),
-                                    right: BorderSide(
-                                        color: Color(0xff00AEEF), width: 3),
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 15.0,
-                                            right: 15,
-                                            top: 8,
-                                            bottom: 8),
-                                        child: Column(
-                                          children: [
-                                            Image.asset('images/logo.png'),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            Text(
-                                              'Uttara',
-                                              style: txt15Black,
-                                            ),
-                                            CustomLiene(),
-                                            Text(
-                                              'Wari',
-                                              style: txt15Black,
-                                            ),
-                                            CustomLiene(),
-                                            Text(
-                                              'Badda',
-                                              style: txt15Black,
-                                            ),
-                                            CustomLiene(),
-                                            Text(
-                                              'Mirpur',
-                                              style: txt15Black,
-                                            ),
-                                            CustomLiene(),
-                                          ],
-                                        ),
-                                      ),
+                            area: 120,
+
+                            ///move round left/right
+                            curveSize: 18,
+
+                            ///increase decrease round shape size
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: Color(0xfff7eca6)),
+                              width: double.infinity,
+                              height: size.height / 3.5,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                          color: Color(0xff4DB84D), width: 3),
+                                      left: BorderSide(
+                                          color: Color(0xfff7931e), width: 3),
+                                      right: BorderSide(
+                                          color: Color(0xff00AEEF), width: 3),
+                                      bottom: BorderSide(
+                                          color: Color(0xfff00d79), width: 3),
                                     ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 15.0,
-                                            right: 15,
-                                            top: 8,
-                                            bottom: 8),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              'Child Ticket',
-                                              style: txtMid,
-                                            ),
-                                            Text(
-                                              'SL NO:',
-                                              style: txt15grey,
-                                            ),
-                                            Text(
-                                              'Quantity: ${snapshot.data!.items![0].qty}',
-                                              style: txt16red,
-                                            ),
-                                            ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      Color(0xff5eb646),
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20))),
-                                              onPressed: () {},
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8.0),
-                                                child: Text(
-                                                    'Price: ${snapshot.data!.items![0].mrp}$takaSymbol'),
+                                  ),
+
+                                  ///Changes
+                                  child: Stack(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 15.0,
+                                                  right: 15,
+                                                  top: 8,
+                                                  bottom: 8),
+                                              child: Column(
+                                                children: [
+                                                  Image.asset(
+                                                      'images/logo.png'),
+                                                  SizedBox(
+                                                    height: 15,
+                                                  ),
+                                                  Text(
+                                                    'Uttara',
+                                                    style: txt15Black,
+                                                  ),
+                                                  CustomLiene(),
+                                                  Text(
+                                                    'Wari',
+                                                    style: txt15Black,
+                                                  ),
+                                                  CustomLiene(),
+                                                  Text(
+                                                    'Badda',
+                                                    style: txt15Black,
+                                                  ),
+                                                  CustomLiene(),
+                                                  Text(
+                                                    'Mirpur',
+                                                    style: txt15Black,
+                                                  ),
+                                                  CustomLiene(),
+                                                ],
                                               ),
-                                            )
-                                          ],
-                                        ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 2,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 15.0,
+                                                  right: 15,
+                                                  top: 8,
+                                                  bottom: 8),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    'Child Ticket',
+                                                    style: txtMid,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    'SL NO: ${snapshot.data!.items![0].tslmsFk}',
+                                                    style: txt15grey,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Text(
+                                                    'Quantity: ${snapshot.data!.items![0].qty}',
+                                                    style: txt17red,
+                                                  ),
+                                                  ElevatedButton(
+                                                    style: ElevatedButton.styleFrom(
+                                                        backgroundColor:
+                                                            Color(0xff5eb646),
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20))),
+                                                    onPressed: () {},
+                                                    child: Padding(
+                                                      padding: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 8.0),
+                                                      child: Text(
+                                                          'Price: ${snapshot.data!.items![0].mrp}$takaSymbol'),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                    )
-                                  ],
+
+                                      ///Changes
+                                      Positioned.fill(
+                                        right: 100,
+                                        child: Column(
+                                          children: List.generate(15, (index) {
+                                            return Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    bottom: 8.0),
+                                                child: Container(
+                                                  height: 10,
+                                                  width: 4,
+                                                  color: Color(0XFFf2f2f2),
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
